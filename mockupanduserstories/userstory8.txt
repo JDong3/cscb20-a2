@@ -1,0 +1,1 @@
+As a student, I want to see a post in misc that gives a course outline.

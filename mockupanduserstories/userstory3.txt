@@ -1,0 +1,1 @@
+As a student, I want to see only lecture posts when I filter posts by lectures.
