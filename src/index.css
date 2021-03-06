@@ -1,0 +1,28 @@
+.back {
+    background: #66023c;
+    display: flex;
+    justify-content: center;
+}
+
+.contentOuter {
+    background: #cdb9c0;
+    width: 904px;
+    display: flex;
+    justify-content: center
+}
+
+.postContainer {
+    display:flex;
+    flex-direction: column;
+}
+
+.post {
+    background: #ede4e7;
+    width: 880px;
+}
+
+html, body, div, span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
