@@ -1,14 +1,73 @@
+.header {
+    width: 100%;
+    background: #420e2c;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: white;
+    position: fixed;
+    height: 30px;
+    display:flex;
+}
+
+.headerLogo {
+    font-size: 25px;
+    font-family: monospace;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin: 6px;
+    height: 30px;
+}
+
+.selected {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 25px;
+    padding-left:3px;
+    padding-right: 3px;
+    background: #9c045c;
+    color: white;
+    text-decoration: none;
+}
+
+.headerElements {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 25px;
+    margin: 3px;
+    color: white;
+    text-decoration: none;
+}
+
+.headerLeft {
+    float: left;
+    width: 75%
+}
+
+.headerRight {
+    float: right;
+    width: 25%;
+    text-align: right;
+}
+
 .back {
     background: #66023c;
     display: flex;
     justify-content: center;
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+.innerBack {
+    display: flex;
+    flex-direction: column;
 }
 
 .contentOuter {
     background: #cdb9c0;
-    width: 904px;
+    width: 800px;
     display: flex;
-    justify-content: center
+    justify-content: center;
+    margin-top: 60px;
 }
 
 .postContainer {
@@ -18,11 +77,47 @@
 
 .post {
     background: #ede4e7;
-    width: 880px;
+    width: 790px;
+    margin: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
-html, body, div, span {
+.postTitle {
+    font-size: 30px;
+    margin: 12px;
+    margin-top: 5px;
+}
+
+.postText {
+    font-size: 20px;
+    margin: 12px;
+}
+
+div, span {
     margin: 0;
     padding: 0;
     border: 0;
+    font-size: 100%;
+	font: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    min-height: 100%;
+}
+
+html {
+    height:100%;
+}
+
+.calendar {
+    margin-top: 60px;
+    width: 1336px;
+    height: 760px;
+    max-width: 98vw;
 }

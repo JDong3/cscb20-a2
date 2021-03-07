@@ -6,6 +6,8 @@ alpha_num = re.compile(r'[a-z]+|[A-Z]+')
 
 @app.route('/<name>')
 def generateResponse(name=None):
+    if name == None:
+        name = 'your_name'
     name = fix_name(name)
 
     if name.isupper():
