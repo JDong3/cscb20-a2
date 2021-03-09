@@ -19,5 +19,9 @@ def generateResponse(name=None):
 
     return f'Welscome, {res}, to my CSCB20 website!'
 
+@app.route('/')
+def default():
+    return f'Welscome, your_name, to my CSCB20 website!'
+
 def fix_name(name):
     return ''.join(alpha_num.findall(name))
