@@ -120,3 +120,15 @@ html {
     height: 760px;
     max-width: 98vw;
 }
+
+.footer {
+    background: #66023c;
+    padding-bottom: 20px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.whiteText {
+    color: white;
+}
