@@ -3,17 +3,22 @@
     <head>
         <meta charset="utf-8" content="width=device-width"></meta>
         <title>CSCB63 Course Website</title>
-        <link rel="stylesheet" href="index.css"></link>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"></link>
     </head>
     <body>
         <div class="header">
-            <span><a href="index.html" class="selected">Home</a></span>
-            <span><a href="assignments.html" class="headerElements">Assignments</a></span>
-            <span><a href="lectures.html" class="headerElements">Lectures</a></span>
-            <span><a href="tutorials.html" class="headerElements">Tutorials</a></span>
-            <span><a href="tests.html" class="headerElements">Tests</a></span>
-            <span><a href="calendar.html" class="headerElements">Calendar</a></span>
-            <span><a href="feedback.html" class="headerElements">Feedback</a></span>
+            <span><a href="/index" class="selected">Home</a></span>
+            <span><a href="/assignments" class="headerElements">Assignments</a></span>
+            <span><a href="/lectures" class="headerElements">Lectures</a></span>
+            <span><a href="/tutorials" class="headerElements">Tutorials</a></span>
+            <span><a href="/tests" class="headerElements">Tests</a></span>
+            <span><a href="/calendar" class="headerElements">Calendar</a></span>
+            <span><a href="feedback" class="headerElements">Feedback</a></span>
+            <span>
+                <form action="/logout" method="POST" class="headerElements">
+                    <input type="submit" value="Logout">
+                </form>
+            </span>
         </div>
 
         <div class="back"><div class="innerBack"><div class="contentOuter"><div class="postContainer">
@@ -58,7 +63,7 @@
 
                     <b>Office Hours:</b>
 
-                    Usually Mondays 11:00-12:30, Friday 10:40-11:30. Please see the calendar for weekly changes.
+                    Usually Mondays 11:00-12:30, Friday 10:40-11:30. Please see the /calendar for weekly changes.
                 </div>
             </div>
             <div class="post">

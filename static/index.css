@@ -39,7 +39,7 @@
 
 .headerLeft {
     float: left;
-    width: 75%
+    width: 75%;
 }
 
 .headerRight {
@@ -131,4 +131,8 @@ html {
 
 .whiteText {
     color: white;
+}
+
+.login {
+    margin-top: 60px;
 }

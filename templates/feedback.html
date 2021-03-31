@@ -3,17 +3,17 @@
     <head>
         <meta charset="utf-8" content="width=device-width"></meta>
         <title>CSCB63 Course Website</title>
-        <link rel="stylesheet" href="index.css"></link>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"></link>
     </head>
     <body>
         <div class="header">
-            <span><a href="index.html" class="headerElements">Home</a></span>
-            <span><a href="assignments.html" class="headerElements">Assignments</a></span>
-            <span><a href="lectures.html" class="headerElements">Lectures</a></span>
-            <span><a href="tutorials.html" class="headerElements">Tutorials</a></span>
-            <span><a href="tests.html" class="headerElements">Tests</a></span>
-            <span><a href="calendar.html" class="headerElements">Calendar</a></span>
-            <span><a href="feedback.html" class="selected">Feedback</a></span>
+            <span><a href="/index" class="headerElements">Home</a></span>
+            <span><a href="/assignments" class="headerElements">Assignments</a></span>
+            <span><a href="/lectures" class="headerElements">Lectures</a></span>
+            <span><a href="/tutorials" class="headerElements">Tutorials</a></span>
+            <span><a href="/tests" class="headerElements">Tests</a></span>
+            <span><a href="/calendar" class="headerElements">Calendar</a></span>
+            <span><a href="feedback" class="selected">Feedback</a></span>
         </div>
 
         <div class="back"><div class="innerBack"><div class="contentOuter"><div class="postContainer">
