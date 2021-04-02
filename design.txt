@@ -1,4 +1,4 @@
-TODO: fix the headers, use dummy opages
+TODO: fix database
 TODO: create remark page for
 
 a1users:
@@ -8,7 +8,7 @@ a1users:
 users(username*, password, type)
 marks(rowid*, student, assignment, mark)
 feedback(rowid*,instructor, q1, q2, q3, q4)
-requests(rowid*(from marks), student, assignment, comments)
+requests(rowid*, student, assignment, comments)
 ships(instructor*, student*)
 
 stduent sees marks:
