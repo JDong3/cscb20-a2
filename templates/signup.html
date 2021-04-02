@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" content="width=device-width"></meta>
+        <title>CSCB63 Course Website</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"></link>
+    </head>
+    <body>
+        <div class="header">
+        </div>
+
+        <div class="back"><div class="innerBack"><div class="loginSize contentOuter"><div class="postContainer">
+            <div class="flexVeritcal loginInnerSize post">
+                <div class="centerContents"><a href="/login">login</a>/<a href="signup">sign up</a></div>
+                <div class="centerContents">
+                    <form class="login" action="/trysignup" method="post">
+                        <label for="username">username</label>
+                        <br>
+                        <input name="username" id="username" type="text" {% if signup_username %}value="{{signup_username}}"{% endif %}>
+                        <br>
+                        <label for="password">password</label>
+                        <br>
+                        <input name="password" id="password"
+                        type="password" {% if signup_password %} value="{{signup_password}}" {% endif %}>
+                        <br>
+                        <label for="passwordRepeat">repeat password</label>
+                        <br>
+                        <input name="passwordRepeat" id="passwordRepeat" type="password" {% if signup_password_repeat %}value="{{signup_password_repeat}}"{% endif %}>
+                        <br>
+                        <label for="accountType">account type</label>
+                        <br>
+                        <select name="accountType" id="accountType">
+                            <option value="student" {% if signup_account_type == "student"%} selected="selected" {% endif %}>student</option>
+                            <option value="instructor" {% if signup_account_type == "instructor"%} selected="selected" {% endif %}>instructor</option>
+                        </select>
+                        <br>
+                        {% if signup_empty_field %}
+                        <div class="errorText">Required fields are empty.</div>
+                        {% endif %}
+
+                        {% if signup_user_taken %}
+                        <div class="errorText">User already exists.</div>
+                        {% endif %}
+
+                        {% if signup_password_no_match %}
+                        <div class="errorText">Passwords don't match.</div>
+                        {% endif %}
+
+                        {% if signup_good %}
+                        <div class="successText">Signup complete, please login. </div>
+                        {% endif %}
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div></div></div></div>
+        <footer class="footer"><b>UTSC Computer Science Faculty: </b><a class="whiteText" href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">link</a><br> This site was designed by Areeba Imran, and Joseph Dong</footer>
+    </body>
+
+</html>

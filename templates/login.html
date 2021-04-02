@@ -9,19 +9,28 @@
         <div class="header">
         </div>
 
-        <div class="back"><div class="innerBack"><div class="contentOuter">
-            <form action="/login" method="post">
-                <label for="username">username</label>
-                <br>
-                <input name="username" id="username" type="text">
-                <br>
-                <label for="password">password</label>
-                <br>
-                <input name="password" id="password" type="text">
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-        </div></div></div>
+        <div class="back"><div class="innerBack"><div class="loginSize contentOuter"><div class="postContainer">
+            <div class="flexVeritcal loginInnerSize post">
+                <div class="centerContents"><a href="/login">login</a>/<a href="signup">sign up</a></div>
+                <div class="centerContents">
+                    <form class="login" action="/trylogin" method="post">
+                        <label for="username">username</label>
+                        <br>
+                        <input name="username" id="username" type="text" {% if login_username %}value="{{login_username}}"{% endif %}>
+                        <br>
+                        <label for="password">password</label>
+                        <br>
+                        <input name="password" id="password" {% if login_password %} value="{{login_password}}" {% endif %}
+                        type="password">
+                        <br>
+                        {% if login_again %}
+                        <div class="errorText">Invalid username or<br>password try again.</div>
+                        {% endif %}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div></div></div></div>
         <footer class="footer"><b>UTSC Computer Science Faculty: </b><a class="whiteText" href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">link</a><br> This site was designed by Areeba Imran, and Joseph Dong</footer>
     </body>
 

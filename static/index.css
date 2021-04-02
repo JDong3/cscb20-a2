@@ -127,12 +127,45 @@ html {
     width: 100%;
     color: white;
     text-align: center;
+    font-family: sans-serif;
 }
 
 .whiteText {
     color: white;
+    font-family: sans-serif;
+}
+
+.loginSize {
+    max-width: 400px;
+}
+
+.loginInnerSize {
+    max-width: 390px;
+}
+
+.centerContents {
+    display: flex;
+    justify-content: center;
+}
+
+.loginRow {
+    flex-basis: fill;
 }
 
 .login {
-    margin-top: 60px;
+    margin: 5px;
+}
+
+.errorText{
+    color: red;
+    font-size: 12px;
+}
+
+.successText{
+    color: green;
+    font-size: 12px;
+}
+.flexVertical {
+    display:flex;
+    flex-direction: column;
 }
