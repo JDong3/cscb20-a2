@@ -58,7 +58,10 @@ values
 ('instructor1', 'ravioli', 'ravioli', 'give me', 'the formuoli'),
 ('instructor1', 'clean up, clean up', 'we all had fun today', 'now its time to clean up and', 'put everything away'),
 ('instructor2', 'political power', 'comes from', 'the barrel', 'of apple juice'),
-('instructor2', 'it is of', 'there is nothing', 'more important than', 'appearing to be', 'secular');
+('instructor2', 'there is nothing', 'more important than', 'appearing to be', 'secular');
 
 insert into
-requests ()
+requests ('markid', 'comment')
+values
+('2', 'hi mom'),
+('3', '????????????????????????????');
