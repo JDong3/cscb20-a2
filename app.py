@@ -1,18 +1,18 @@
 import sqlite3
 from flask import Flask, render_template, session, request, redirect, url_for, g, current_app
 
-# TODO: hook up database, create db, put data, check login vs database
-# TODO: check login, retry error
 app = Flask(__name__)
 SESSION_KEYS = ['login_again', 'login_username', 'login_password',
                 'signup_user', 'signup_password_no_match', 'signup_good',
-                'signup_username', 'signup_password', 'signup_password_repeat']
+                'signup_username', 'signup_password', 'signup_password_repeat',
+                'is_student']
 """
 session variables
     login_again: bool
     signup_user_taken: bool, whether the username requested is taken
     signup_password_no_match: bool
     signup_good: bool
+    is_student: bool
 """
 
 @app.route('/')
@@ -35,6 +35,7 @@ def login():
     users = query('select * from users where username = ?', [username])
     if len(users) == 1 and users[0]['password'] == password:
         session['user'] = username
+        session['is_student'] = users[0]['type'] == 'student'
         return redirect('/index')
     else:
         print('here')
@@ -100,21 +101,27 @@ def router(page=None):
         return redirect('/login')
 
     if page == 'assignments':
-        return render_template('assignments.html')
+        return render_template('assignments.html', **session)
     elif page == 'index':
-        return render_template('index.html')
+        return render_template('index.html', **session)
     elif page == 'calendar':
-        return render_template('calendar.html')
+        return render_template('calendar.html', **session)
     elif page == 'feedback':
-        return render_template('feedback.html')
+        return render_template('feedback.html', **session)
     elif page == 'lectures':
-        return render_template('lectures.html')
+        return render_template('lectures.html', **session)
     elif page == 'tests':
-        return render_template('tests.html')
+        return render_template('tests.html', **session)
     elif page == 'tutorials':
-        return render_template('tutorials.html')
+        return render_template('tutorials.html', **session)
     elif page == 'signup':
-        return render_template('signup.html')
+        return render_template('signup.html', **session)
+    elif page == 'marks':
+        return render_template('marks.html', **session)
+    elif page == 'manage' and session['is_student'] == False:
+        return render_template('manage.html', **session)
+    else:
+        return 'What are you doing, please go back.'
 
 def get_db():
     if not 'db' in g:

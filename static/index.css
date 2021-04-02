@@ -169,3 +169,20 @@ html {
     display:flex;
     flex-direction: column;
 }
+
+#logoutButton{
+    background: inherit;
+    border: 0px;
+    font-family: inherit;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 25px;
+    /* margin: 4px; */
+    color: white;
+    text-decoration: none;
+}
+
+form {
+    margin: 0px;
+    padding: 0px;
+}

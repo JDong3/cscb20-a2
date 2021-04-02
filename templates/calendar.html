@@ -13,7 +13,12 @@
             <span><a href="/tutorials" class="headerElements">Tutorials</a></span>
             <span><a href="/tests" class="headerElements">Tests</a></span>
             <span><a href="/calendar" class="selected">Calendar</a></span>
-            <span><a href="feedback" class="headerElements">Feedback</a></span>
+            <span><a href="/feedback" class="headerElements">Feedback</a></span>
+            <span><a href="/marks" class="headerElements">Marks</a></span>
+            {% if not is_student %}
+            <span><a href="/manage" class="headerElements">Manage</a></span>
+            {% endif %}
+            <form action="/logout" method="POST"><input type="submit" id="logoutButton" value="Logout"></form>
         </div>
 
         <div class="back"><div class="innerBack"><iframe class="calendar" src="https://calendar.google.com/calendar/embed?src=f2oogqnfo1q728k3lcbtr4v478%40group.calendar.google.com&ctz=America%2FToronto">

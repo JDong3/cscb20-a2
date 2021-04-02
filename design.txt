@@ -1,0 +1,40 @@
+TODO: fix the headers, use dummy opages
+TODO: create remark page for
+
+a1users:
+    students: have "marks", have teachers, submit remark requests
+    teachers: have students, have feedback, submit marks, add students
+
+users(username*, password, type)
+marks(rowid*, student, assignment, mark)
+feedback(rowid*,instructor, q1, q2, q3, q4)
+requests(rowid*(from marks), student, assignment, comments)
+ships(instructor*, student*)
+
+stduent sees marks:
+    select assignment, mark from marks
+    where usename = student
+
+student requests remark:
+    insert into requests(id, comments) values (?, ?)
+
+student submits feedback:
+    insert into feedback values(instructor, q1, q2, q3, q4) values (?, ?, ?, ?, ?)
+
+teacher adds student:
+    insert into ships(instructor, student) values (?, ?)
+
+teacher submits mark:
+    insert into marks(student, assignment, mark)
+
+teacher submits remark request:
+    update marks
+    set mark = (?)
+    where rowid = (?)
+
+    delete from requests
+    where rowid = (?)
+
+teacher views feedback:
+    select * from feedback
+    where

@@ -10,13 +10,13 @@
             <span><a href="/index" class="headerElements">Home</a></span>
             <span><a href="/assignments" class="headerElements">Assignments</a></span>
             <span><a href="/lectures" class="headerElements">Lectures</a></span>
-            <span><a href="/tutorials" class="selected">Tutorials</a></span>
+            <span><a href="/tutorials" class="headerElements">Tutorials</a></span>
             <span><a href="/tests" class="headerElements">Tests</a></span>
             <span><a href="/calendar" class="headerElements">Calendar</a></span>
             <span><a href="/feedback" class="headerElements">Feedback</a></span>
             <span><a href="/marks" class="headerElements">Marks</a></span>
             {% if not is_student %}
-            <span><a href="/manage" class="headerElements">Manage</a></span>
+            <span><a href="/manage" class="selected">Manage</a></span>
             {% endif %}
             <form action="/logout" method="POST"><input type="submit" id="logoutButton" value="Logout"></form>
         </div>
