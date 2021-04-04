@@ -23,78 +23,123 @@
 
         <div class="back"><div class="innerBack"><div class="contentOuter"><div class="postContainer">
 
+            {% if marks_do_answer %}
             <div class="post">
-                <div class="postTitle">Tutorial 7</div>
+                <div class="postTitle">Request Remark: {{marks_answer_data.assignment}}, By: {{marks_answer_data.student}}</div>
                 <div class="postText">
-                    <b>Topic:</b> Dijkstra<br>
-                    <b>Handout:</b>
-                    <a href="a.pdf" target="_blank">Handout</a>,<br>
-                    <b>Solution:</b> None
+                    <form action="/submitAnswer" method="POST">
+                        <label for="mark">new mark</label>
+                        <input name="mark" type="text">
+                        <br>
+                        <input type="hidden" value="{{marks_answer_data.rowid}}" name="rowid">
+                        <input type="submit" value="Submit Remark">
+                    </form>
                 </div>
             </div>
+            {% endif %}
 
+            {% if marks_do_remark %}
             <div class="post">
-                <div class="postTitle">Tutorial 6</div>
+                <div class="postTitle">Request Remark: {{marks_remark_data.assignment}}</div>
                 <div class="postText">
-                    <b>Topic:</b> MSTs and Prims Algorithm<br>
-                    <b>Handout:</b>
-                    <a href="a.pdf" target="_blank">Handout</a>,<br>
-                    <b>Solution:</b> None
+                    <form action="/submitRemark" method="POST">
+                        <textarea name="comment" rows="4" cols="60"></textarea>
+                        <br>
+                        <input type="hidden" value="{{marks_remark_data.rowid}}" name="rowid">
+                        <input type="submit" value="Request Remark">
+                    </form>
+                </div>
+
+            </div>
+            {% endif %}
+
+            {% if not is_student %}
+            <div class="post">
+                <div class="postTitle">Currently Viewing</div>
+                <div class="postText">
+                    <form action='changeMarkFor' method='POST'>
+                        <select name="markFor">
+                            <option value="requests" {% if marks_marks_for == "requests" %}selected="selected"{% endif %}>Remark Requests</option>
+                            <option value="createNew" {% if marks_marks_for == "createNew"%}selected="selected"{% endif %}>create new</option>
+                            {% for student in marks_students %}
+                            <option value="{{student}}" {% if marks_marks_for == student %}selected="selected"{% endif %}>{{student}} marks
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Load Data">
+                    </form>
+
                 </div>
             </div>
+            {% endif %}
 
-            <div class="post">
-                <div class="postTitle">Tutorial 5</div>
-                <div class="postText">
-                    <b>Topic:</b> Graph Search Algorithms<br>
-                    <b>Handout:</b>
-                    <a href="a.pdf" target="_blank">Graph Definitions</a>,<br>
-                    <a href="a.pdf" target="_blank">BFS Handout</a>,<br>
-                    <a href="a.pdf" target="_blank">BFS practice</a>,<br>
-                    <b>Solution:</b> None
+            {% if not marks_marks_for == "requests"%}
+                {% for mark in marks_marks %}
+                <div class="post">
+                    <div class="postTitle">{{mark.assignment}}</div>
+                    <div class="postText">
+                        <b>Grade:</b> {{mark.mark}}<br>
+                        <form action="/answer" method="POST">
+                            <input type="hidden" value="{{mark.rowid}}" name="rowid">
+                            <input type="hidden" value="{{mark.assignment}}" name="assignment">
+                            {% if is_student %}
+                            <input type="submit" value="Remark This One">
+                            {% endif %}
+                        </form>
+                    </div>
                 </div>
+                {% endfor %}
+            {% endif %}
+
+
+            {% if marks_marks_for == "requests" %}
+
+                {% for mark in marks_marks %}
+                <div class="post">
+                    <div class="postTitle">Remark Request: {{mark.assignment}}, By {{mark.student}}</div>
+                    <div class="postText">
+                        <b>Grade:</b> {{mark.mark}}<br>
+                        <b>Comment:</b>{{mark.comment}}
+                        <form action="/answer" method="POST">
+                            <input type="hidden" value="{{mark.rowid}}" name="rowid">
+                            <input type="hidden" value="{{mark.assignment}}" name="assignment">
+                            <input type="hidden" value="{{mark.student}}" name="student">
+                            <input type="hidden" value="{{mark.mark}}" name="mark">
+                            <input type="submit" value="Submit Remark">
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if marks_marks_for == "createNew" %}
+            <div class="post">
+                <div class="postTitle">Create New Mark</div>
+                <div class="postText">
+                    <form action="/createNew" method="post">
+                        <label for="student">Student</label>
+                        <br>
+                        <select name="student">
+                            {% for student in marks_students %}
+                            <option value="{{student}}">{{student}}</option>
+                            {% endfor %}
+
+                        </select>
+                        <br>
+                        <label for="assignment">Assignment</label>
+                        <br>
+                        <input type="text" name="assignment">
+                        <br>
+                        <label for="mark">Mark</label>
+                        <br>
+                        <input type="text" name="mark">
+                        <br>
+                        <input type="submit" value="Create Mark">
+                    </form>
+                </div>
+
             </div>
 
-            <div class="post">
-                <div class="postTitle">Tutorial 4</div>
-                <div class="postText">
-                    <b>Topic:</b> Practice Term test format<br>
-                    <b>Handout:</b> None
-                </div>
-            </div>
-
-
-            <div class="post">
-                <div class="postTitle">Tutorial 3</div>
-                <div class="postText">
-                    <b>Topic:</b> AVL Trees Insert/Delete<br>
-                    <b>Handout:</b>
-                    <a href="a.pdf" target="_blank">handout</a>,<br>
-                    <b>Solution:</b>
-                    <a href="a.pdf" target="_blank">solution</a>,
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="postTitle">Tutorial 2</div>
-                <div class="postText">
-                    <b>Topic:</b> Worst Case Complexity<br>
-                    <b>Handout:</b>
-                    <a href="a.pdf" target="_blank">handout</a>,<br>
-                    <b>Solution:</b>
-                    <a href="a.pdf" target="_blank">solution</a>,
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="postTitle">Tutorial 1</div>
-                <div class="postText">
-                    <b>Topic:</b> No Topic <br>
-                    <b>Handout:</b> None <br>
-                    <b>Solution:</b> None
-                </div>
-            </div>
-
+            {% endif %}
         </div></div></div></div>
         <footer class="footer"><b>UTSC Computer Science Faculty: </b><a class="whiteText" href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">link</a><br> This site was designed by Areeba Imran, and Joseph Dong</footer>
     </body>

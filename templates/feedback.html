@@ -22,16 +22,52 @@
         </div>
 
         <div class="back"><div class="innerBack"><div class="contentOuter"><div class="postContainer">
-            <div class="post">
-                <div class="postTitle">Feedback Form</div>
-                <div class="postText">
-                    <form action="/action_page.php">
-                        <textarea name="feedback" rows="4" cols="60" placeholder="enter you feedback here"></textarea><br>
-                        <input type="submit" value="Submit">
-                    </form>
+            {% if is_student %}
+                <div class="post">
+                    <div class="postTitle">Feedback Form</div>
+                    <div class="postText">
+                        <form action="/submitFeedback" method="POST">
+                            <label for="instructor">instructor</label>
+                            <br>
+                            <select name="instructor">
+                                {% for instructor in feedback_instructors %}
+                                <option value="{{instructor.instructor}}">{{instructor.instructor}}</option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <label for="q1">What do you like about the instructor's teaching?</label><br>
+                            <textarea name="q1" rows="4" cols="80" placeholder="enter you feedback here"></textarea><br>
+                            <label for="q2">What do you recommend the instructor to do to improve their teaching?</label><br>
+                            <textarea name="q2" rows="4" cols="80" placeholder="enter you feedback here"></textarea><br>
+                            <label for="q3">What do you like about the labs?</label><br>
+                            <textarea name="q3" rows="4" cols="80" placeholder="enter you feedback here"></textarea><br>
+                            <label for="q4">What do you recommend the lab instructors to do to improve their lab teaching?</label><br>
+                            <textarea name="q4" rows="4" cols="80" placeholder="enter you feedback here"></textarea><br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
                 </div>
+
+            {% endif %}
+            {% if not is_student %}
+                {% for feedback in feedback_feedback %}
+                    <div class="post">
+                        <div class="postTitle">Anonymouos Feedback</div>
+                        <div class="postText">
+                            <b>What do you like about the instructor's teaching?</b><br> {{feedback.q1}}
+                            <br>
+                            <b>What do you recommend the instructor to do to improve their teaching?</b><br> {{feedback.q2}}
+                            <br>
+                            <b>What do you like about the labs?</b><br> {{feedback.q3}}
+                            <br>
+                            <b>What do you recommend the lab instructors to do to improve their teaching?</b><br> {{feedback.q4}}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
             </div>
-        </div></div></div></div>
+        </div></div></div>
         <footer class="footer"><b>UTSC Computer Science Faculty: </b><a class="whiteText" href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">link</a><br> This site was designed by Areeba Imran, and Joseph Dong</footer>
     </body>
 

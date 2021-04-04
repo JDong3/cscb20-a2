@@ -1,4 +1,5 @@
-TODO: fix database
+TODO: create mark page viewing marks
+TODO: can submit remarks
 TODO: create remark page for
 
 a1users:
