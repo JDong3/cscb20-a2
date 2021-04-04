@@ -1,1 +1,0 @@
-As a student, I only want to see tutorial posts when I filter by tutorials.

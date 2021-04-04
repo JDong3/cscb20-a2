@@ -1,1 +1,0 @@
-As a student, I want to see a list of all the posts when I load the website.
