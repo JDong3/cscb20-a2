@@ -78,7 +78,7 @@
                     <div class="postTitle">{{mark.assignment}}</div>
                     <div class="postText">
                         <b>Grade:</b> {{mark.mark}}<br>
-                        <form action="/answer" method="POST">
+                        <form action="/remark" method="POST">
                             <input type="hidden" value="{{mark.rowid}}" name="rowid">
                             <input type="hidden" value="{{mark.assignment}}" name="assignment">
                             {% if is_student %}
