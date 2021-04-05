@@ -140,16 +140,18 @@ def try_feedback():
     q3 = request.form['q3']
     q4 = request.form['q4']
     params = [instructor, q1, q2, q3, q4]
+    if not(q1 or q2 or q3 or q4):
+        return redirect('/feedback')
     insert('insert into feedback(instructor, q1, q2, q3, q4) values (?, ?, ?, ?, ?)', params)
     return redirect('/feedback')
 
 def feedback():
     if not session['is_student']:
         params = [session['user']]
-        your_feedback = query('select * from feedback where instructor = (?)', params, extract=True)
+        your_feedback = query('select  from feedback where instructor = (?)', params, extract=True)
         session['feedback_feedback'] = your_feedback
     else:
-        instructors = query('select * from ships where student = (?)', [session['user']], extract=True)
+        instructors = query('select * from users where type = (?)', ["instructor"], extract=True)
         session['feedback_instructors'] = instructors
 
     return render_template('feedback.html', **session)
@@ -208,8 +210,8 @@ def marks():
 
     if not session['is_student']:
         instructor = session['user']
-        students = query('select student from ships where instructor == (?)', [instructor], extract=True)
-        session['marks_students'] = [ele['student'] for ele in students]
+        students = query('select username from users where type == (?)', ["student"], extract=True)
+        session['marks_students'] = [ele['username'] for ele in students]
 
     if session['marks_marks_for'] == 'requests':
         all_marks = query('select marks.rowid as rowid, assignment, mark, student, comment from requests cross join marks where requests.markid == marks.rowid;', [], extract=True)
@@ -255,3 +257,4 @@ def fix_session():
 app.teardown_appcontext(close_db)
 app.secret_key = 'applepen'
 app.config['DATABASE'] = 'app.db'
+
