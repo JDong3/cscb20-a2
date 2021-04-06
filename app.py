@@ -148,7 +148,7 @@ def try_feedback():
 def feedback():
     if not session['is_student']:
         params = [session['user']]
-        your_feedback = query('select  from feedback where instructor = (?)', params, extract=True)
+        your_feedback = query('select * from feedback where instructor = (?)', params, extract=True)
         session['feedback_feedback'] = your_feedback
     else:
         instructors = query('select * from users where type = (?)', ["instructor"], extract=True)
@@ -257,4 +257,3 @@ def fix_session():
 app.teardown_appcontext(close_db)
 app.secret_key = 'applepen'
 app.config['DATABASE'] = 'app.db'
-
